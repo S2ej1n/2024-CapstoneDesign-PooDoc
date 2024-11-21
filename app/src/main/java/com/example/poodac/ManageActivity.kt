@@ -10,11 +10,12 @@ class ManageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_management)
 
-        val textView1: TextView = findViewById(R.id.patient1)
+        val patient1: TextView = findViewById(R.id.patient1)
         val textView2: TextView = findViewById(R.id.patient2)
 
-        textView1.setOnClickListener {
+        patient1.setOnClickListener {
             val intent = Intent(this, MonthActivity::class.java)
+            intent.putExtra("PATIENT_NAME", patient1.text.toString()) // 텍스트를 Intent에 추가
             startActivity(intent) // MonthActivity 시작
         }
 

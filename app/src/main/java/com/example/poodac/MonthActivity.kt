@@ -12,11 +12,20 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import android.content.Intent
 import android.widget.CalendarView
 import android.widget.Toast
+import android.widget.TextView
 
 class MonthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_month_state)
+
+        //환자 이름 표시
+        // Intent에서 텍스트 가져오기
+        val patientName = intent.getStringExtra("PATIENT_NAME")
+
+        // TextView에 텍스트 설정
+        val tvPatientName = findViewById<TextView>(R.id.tv_patient_name)
+        tvPatientName.text = patientName
 
         // BarChart 초기화 코드
         val barChart = findViewById<BarChart>(R.id.graph_layout) // XML에서 그래프의 ID를 가져옴
