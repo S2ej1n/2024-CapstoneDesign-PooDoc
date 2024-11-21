@@ -20,14 +20,22 @@ class TodayActivity : AppCompatActivity() {
         //이거 나중에 외부 파일에 적을까 생각중. 배변시간
         data class Record(val startTime: String, val endTime: String, val duration: String)
 
-        // 현재 날짜 변경을 위함.
-        val todayDate: TextView = findViewById(R.id.today_date)
+//        // 현재 날짜 변경을 위함.
+//        val todayDate: TextView = findViewById(R.id.today_date)
+//
+//        // 현재 날짜 설정 (예: 2024. 8. 21. (수))
+//        val dateFormat = SimpleDateFormat("yyyy. M. d. (E)", Locale.KOREA)
+//        val currentDate = dateFormat.format(Date())
+//
+//        todayDate.text = currentDate
 
-        // 현재 날짜 설정 (예: 2024. 8. 21. (수))
-        val dateFormat = SimpleDateFormat("yyyy. M. d. (E)", Locale.KOREA)
-        val currentDate = dateFormat.format(Date())
+        //캘린더뷰에서 선택한 날짜 가져오기
+        // 전달된 날짜 가져오기
+        val selectedDate = intent.getStringExtra("SELECTED_DATE")
 
-        todayDate.text = currentDate
+        // TextView에 날짜 표시 (예제)
+        val dateTextView = findViewById<TextView>(R.id.today_date) // activity_today_stats에 있는 TextView ID
+        dateTextView.text = "$selectedDate"
 
         // 서버에서 불러온 숫자. fetchNumberFromServer() 를 추가하면 됨
         val serverNumber = fetchNumberFromServer()

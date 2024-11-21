@@ -9,6 +9,10 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 
+import android.content.Intent
+import android.widget.CalendarView
+import android.widget.Toast
+
 class MonthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,5 +47,25 @@ class MonthActivity : AppCompatActivity() {
 
         // 그래프 새로고침
         barChart.invalidate()
+
+
+        //여기는 캘린더 코드
+        // CalendarView 객체 가져오기
+        val calendarView = findViewById<CalendarView>(R.id.calendarView)
+
+        // 날짜 선택 이벤트 처리
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            // 선택된 날짜를 Toast로 표시 (테스트 용도)
+//            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+            val selectedDate = "$year. ${month + 1}. $dayOfMonth."
+            Toast.makeText(this, " $selectedDate 의 정보로 이동합니다.", Toast.LENGTH_SHORT).show()
+
+            // activity_today_stats로 이동
+            val intent = Intent(this, TodayActivity::class.java)
+
+            // 선택된 날짜를 전달
+            intent.putExtra("SELECTED_DATE", selectedDate)
+            startActivity(intent)
+        }
     }
 }
