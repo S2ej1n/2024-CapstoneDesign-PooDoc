@@ -46,6 +46,7 @@
                 android:textSize="15sp"
                 android:textColor="#AAAAAA"
                 android:hint="아이디를 입력해주세요"
+                android:digits="0123456789qwertzuiopasdfghjklyxcvbnm"
                 android:background="@drawable/inputstyxml"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPersonName"/>
@@ -65,6 +66,7 @@
                 android:textSize="15sp"
                 android:textColor="#AAAAAA"
                 android:hint="비밀번호를 입력해주세요"
+                android:digits="0123456789qwertzuiopasdfghjklyxcvbnm"
                 android:background="@drawable/inputstyxml"
                 android:layout_marginBottom="30dp"
                 android:inputType="textPassword"/>
@@ -85,6 +87,7 @@
         android:background="@drawable/mainbut"
         android:layout_marginBottom="10dp"
         />
+        <!--  로그인 버튼 기본적으로 비활성화 상태임.  -->
 
     <LinearLayout
         android:layout_width="match_parent"
