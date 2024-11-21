@@ -14,8 +14,8 @@ class ManageActivity : AppCompatActivity() {
         val textView2: TextView = findViewById(R.id.patient2)
 
         textView1.setOnClickListener {
-            val intent = Intent(this, TodayActivity::class.java)
-            startActivity(intent) // TodayActivity 시작
+            val intent = Intent(this, MonthActivity::class.java)
+            startActivity(intent) // MonthActivity 시작
         }
 
         textView2.setOnClickListener {

@@ -42,31 +42,31 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="25dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ㅏ우"/>
-<!--                <com.github.mikephil.charting.charts.BarChart-->
-<!--                    android:id="@+id/graph_layout"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="320dp"-->
-<!--                    android:layout_weight="2"-->
-<!--                    android:layout_margin="16dp">-->
-
-<!--                    &lt;!&ndash; 여기에 그래프를 추가 &ndash;&gt;-->
-<!--                    &lt;!&ndash; 예: MPAndroidChart 라이브러리를 사용하여 BarChart를 추가 &ndash;&gt;-->
-<!--                </com.github.mikephil.charting.charts.BarChart>-->
-
-                <!-- 캘린더 뷰 -->
-<!--                <CalendarView-->
+<!--                <TextView-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/calendarView"-->
-<!--                    android:layout_marginLeft="8dp"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:layout_marginRight="8dp"-->
-<!--                    android:layout_marginTop="8dp"/>-->
+<!--                    android:text="ㅏ우"/>-->
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/graph_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_weight="2"
+                    android:layout_margin="16dp">
+
+                    <!-- 여기에 그래프를 추가 -->
+                    <!-- 예: MPAndroidChart 라이브러리를 사용하여 BarChart를 추가 -->
+                </com.github.mikephil.charting.charts.BarChart>
+
+                <!-- 캘린더 뷰 -->
+                <CalendarView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/calendarView"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
 
         </LinearLayout>
