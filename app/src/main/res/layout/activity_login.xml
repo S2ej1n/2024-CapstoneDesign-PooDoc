@@ -70,6 +70,7 @@
                 android:inputType="textPassword"/>
         </LinearLayout>
     <Button
+        android:id="@+id/login_but"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_gravity="center"

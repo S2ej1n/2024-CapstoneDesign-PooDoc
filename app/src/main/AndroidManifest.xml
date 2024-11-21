@@ -25,6 +25,7 @@
         <activity android:name=".TodayActivity2"/>
         <activity android:name=".ManageActivity"/>
         <activity android:name=".MonthActivity"/>
+        <activity android:name=".LoginActivity"/>
     </application>
 
 </manifest>
