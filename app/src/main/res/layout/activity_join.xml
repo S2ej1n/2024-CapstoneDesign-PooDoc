@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-18dp"
+        android:src="@drawable/mainlogo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:textSize="22dp"
+        android:textColor="#B8E9EC"
+        android:fontFamily="@font/chab"
+        android:text="회원가입"/>
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--아이디-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="ID"/>
+            <EditText
+                android:id="@+id/editID"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="6~15자 영문/숫자 조합으로 입력해주세요"
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"/>
+            <!--비밀번호-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="PASSWORD"/>
+            <EditText
+                android:id="@+id/editPW"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="8~16자 영문/숫자 조합으로 입력해주세요"
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPassword"/>
+            <!--비번확인-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="PASSWORD CHECK"/>
+            <EditText
+                android:id="@+id/editPWcheck"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="비밀번호를 다시 입력해주세요."
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPassword"/>
+            <!--이름-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="이름"/>
+            <EditText
+                android:id="@+id/editNAME"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="이름을 입력해주세요."
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"/>
+            <!--소속기관-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="소속 기관"/>
+            <EditText
+                android:id="@+id/editGM"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="소속 기관을 선택해주세요."
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="10dp"
+                android:inputType="textPersonName"/>
+            <!--이용약관 동의-->
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/textcolor"
+                android:text="이용약관동의"
+
+                android:id="@+id/checkBox"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

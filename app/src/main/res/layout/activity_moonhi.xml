@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-18dp"
+        android:src="@drawable/mainlogo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:textSize="22dp"
+        android:textColor="#B8E9EC"
+        android:fontFamily="@font/chab"
+        android:text="문의하기"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--아이디-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="이메일"/>
+            <EditText
+                android:id="@+id/editID"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="ex. poodoc@google.com"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/inputstyxml"
+                android:inputType="textPersonName"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="* 문의 내용에 대한 답변을 받기 위한 이메일 주소입니다."
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="#4E4E4E"
+                android:textSize="10sp" />
+
+            <!--비밀번호-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/textcolor"
+                android:text="문의사항"/>
+            <EditText
+                android:id="@+id/editPW"
+                android:layout_width="290dp"
+                android:layout_height="150dp"
+                android:padding="15dp"
+                android:textSize="15sp"
+                android:textColor="#AAAAAA"
+                android:hint="문의 내용을 입력해주세요"
+                android:background="@drawable/inputstyxml"
+                android:layout_marginBottom="30dp"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:text="전송하기"
+        android:shadowColor="#5BC9D0"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:background="@drawable/mainbut"
+        android:layout_marginBottom="10dp"
+        />
+
+
+</LinearLayout>
