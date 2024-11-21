@@ -27,9 +27,20 @@ class LoginActivity  : AppCompatActivity() {
                 // 입력 칸 중 하나라도 비어 있으면 경고 메시지 표시
                 Toast.makeText(this, "아이디와 비밀번호를 모두 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                // 입력이 완료되었으면 다음 화면으로 이동
-                val intent = Intent(this, ManageActivity::class.java)
-                startActivity(intent)
+                // 아이디와 비밀번호 확인
+                if (idInput == "test"){
+                    if (pwInput == "1234") {
+                        // 아이디와 비밀번호가 올바르면 다음 화면으로 이동
+                        val intent = Intent(this, ManageActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        // 비밀번호가 틀렸을 경우
+                        Toast.makeText(this, "비밀번호를 잘못 입력하셨습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                } else{
+                    // 아이디가 틀렸을 경우
+                    Toast.makeText(this, "존재하지않는 아이디입니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 //        val button: Button = findViewById(R.id.login_but)
