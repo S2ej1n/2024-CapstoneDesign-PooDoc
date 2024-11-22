@@ -33,7 +33,7 @@ class ManageActivity : AppCompatActivity() {
                 text = patientName // 환자 이름 설정
                 setTextColor(resources.getColor(R.color.textcolor, null))
                 setBackgroundResource(R.drawable.patient_box)
-                setPadding(12, 12, 12, 12)
+                setPadding(12, 20, 15, 20)
                 textSize = 15f
                 layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,

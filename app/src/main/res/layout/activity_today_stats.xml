@@ -23,33 +23,34 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:weightSum="50">
+        android:weightSum="50"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
 
-        <ImageView
-            android:id="@+id/before_but"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:src="@drawable/before_but"
-            android:layout_weight="15"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/before_but"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/before_but"-->
+<!--            android:layout_weight="15"/>-->
 
         <TextView
             android:id="@+id/today_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:layout_marginBottom="10dp"
             android:textSize="14sp"
             android:textColor="@color/textcolor"
             android:text="2024. 00. 00. (수)"
             android:gravity="center"
             android:layout_weight="20"/>
 
-        <ImageView
-            android:id="@+id/next_but"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:src="@drawable/next_but"
-            android:layout_weight="15"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/next_but"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="25dp"-->
+<!--            android:src="@drawable/next_but"-->
+<!--            android:layout_weight="15"/>-->
     </LinearLayout>
 
     <!-- 여기서부터 변상태 check -->
