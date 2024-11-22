@@ -30,6 +30,11 @@ class MonthActivity : AppCompatActivity() {
         // BarChart 초기화 코드
         val barChart = findViewById<BarChart>(R.id.graph_layout) // XML에서 그래프의 ID를 가져옴
 
+        // 그래프에 사용할 색상 지정
+//        val yellow_diarrhea_Color = Color.parseColor("#E8C300")
+//        val red_constipation_Color = Color.parseColor("#FF5656")
+//        val blue_strange_Color = Color.parseColor("6893FF")
+
         // 데이터 생성
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1f, 2f)) // 설사

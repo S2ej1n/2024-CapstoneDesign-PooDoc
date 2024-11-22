@@ -26,6 +26,7 @@ class LoginActivity  : AppCompatActivity() {
             // 서버 응답 시뮬레이션. 서버랑 연결하면 이게 서버 응답을 담는 변수가 될거임
             var server_login_response = "noinput"
 
+
             if (idInput.isEmpty() || pwInput.isEmpty()) {
                 // 입력 칸 중 하나라도 비어 있으면 경고 메시지 표시
                 Toast.makeText(this, "모든 칸을 입력해주세요", Toast.LENGTH_SHORT).show()
