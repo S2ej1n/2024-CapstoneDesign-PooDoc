@@ -31,25 +31,31 @@ class MonthActivity : AppCompatActivity() {
         val barChart = findViewById<BarChart>(R.id.graph_layout) // XML에서 그래프의 ID를 가져옴
 
         // 그래프에 사용할 색상 지정
-//        val yellow_diarrhea_Color = Color.parseColor("#E8C300")
-//        val red_constipation_Color = Color.parseColor("#FF5656")
-//        val blue_strange_Color = Color.parseColor("6893FF")
+        val yellow_diarrhea_Color = Color.parseColor("#E8C300")
+        val red_constipation_Color = Color.parseColor("#FF5656")
+        val blue_strange_Color = Color.parseColor("#6893FF")
 
         // 데이터 생성
         val entries = ArrayList<BarEntry>()
         entries.add(BarEntry(1f, 2f)) // 설사
         entries.add(BarEntry(2f, 5f)) // 변비
         entries.add(BarEntry(3f, 3f)) // 변색깔이상
-        entries.add(BarEntry(4f, 6f)) // 설사
-        entries.add(BarEntry(5f, 4f)) // 변비
+//        entries.add(BarEntry(4f, 6f)) // 설사
+//        entries.add(BarEntry(5f, 4f)) // 변비
 
         // BarDataSet 생성 (그래프 데이터와 라벨 설정)
         val barDataSet = BarDataSet(entries, "이번 달 배변 위험 통계")
-        barDataSet.colors = listOf(Color.YELLOW, Color.RED, Color.BLUE, Color.YELLOW, Color.RED) // 각 데이터 색상
-        barDataSet.valueTextSize = 12f
+        barDataSet.colors = listOf(
+            yellow_diarrhea_Color,
+            red_constipation_Color,
+            blue_strange_Color) // 각 데이터 색상
+        barDataSet.valueTextSize = 12f //막대 위 표시되는 텍스트 값
 
         // BarData 생성 및 BarChart에 설정
         val barData = BarData(barDataSet)
+
+        // 막대 두께 설정 (0.5f는 기본값, 더 작게/크게 설정 가능)
+        barData.barWidth = 0.3f // 두께를 0.8로 설정 (값 조정 가능)
         barChart.data = barData
 
         // BarChart 스타일 설정
