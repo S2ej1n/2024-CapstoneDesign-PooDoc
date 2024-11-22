@@ -36,24 +36,34 @@ class MonthActivity : AppCompatActivity() {
         val blue_strange_Color = Color.parseColor("#6893FF")
 
         // 데이터 생성
-        val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(1f, 2f)) // 설사
-        entries.add(BarEntry(2f, 5f)) // 변비
-        entries.add(BarEntry(3f, 3f)) // 변색깔이상
-//        entries.add(BarEntry(4f, 6f)) // 설사
-//        entries.add(BarEntry(5f, 4f)) // 변비
+        val diarrheaEntries = ArrayList<BarEntry>()
+        val constipationEntries = ArrayList<BarEntry>()
+        val colorChangeEntries = ArrayList<BarEntry>()
 
-        // BarDataSet 생성 (그래프 데이터와 라벨 설정)
-        val barDataSet = BarDataSet(entries, "이번 달 배변 위험 통계")
-        barDataSet.colors = listOf(
-            yellow_diarrhea_Color,
-            red_constipation_Color,
-            blue_strange_Color) // 각 데이터 색상
-        barDataSet.valueTextSize = 12f //막대 위 표시되는 텍스트 값
+        // 데이터 추가
+        diarrheaEntries.add(BarEntry(1f, 2f)) // 설사
+        constipationEntries.add(BarEntry(2f, 5f)) // 변비
+        colorChangeEntries.add(BarEntry(3f, 3f)) // 변색깔 이상
 
-        // BarData 생성 및 BarChart에 설정
-        val barData = BarData(barDataSet)
+        // 각각의 BarDataSet 생성
+        val diarrheaDataSet = BarDataSet(diarrheaEntries, "설사")
+        diarrheaDataSet.color = yellow_diarrhea_Color // 노란색
+        diarrheaDataSet.setDrawValues(true)
+        diarrheaDataSet.valueTextSize = 12f
 
+
+        val constipationDataSet = BarDataSet(constipationEntries, "변비")
+        constipationDataSet.color = red_constipation_Color // 빨간색
+        constipationDataSet.setDrawValues(true)
+        constipationDataSet.valueTextSize = 12f
+
+        val colorChangeDataSet = BarDataSet(colorChangeEntries, "변색깔 이상")
+        colorChangeDataSet.color = blue_strange_Color // 파란색
+        colorChangeDataSet.setDrawValues(true) // 값 숨기기 (선택)
+        colorChangeDataSet.valueTextSize = 12f
+
+        // BarData 생성
+        val barData = BarData(diarrheaDataSet, constipationDataSet, colorChangeDataSet)
         // 막대 두께 설정 (0.5f는 기본값, 더 작게/크게 설정 가능)
         barData.barWidth = 0.3f // 두께를 0.8로 설정 (값 조정 가능)
         barChart.data = barData
