@@ -65,7 +65,7 @@ class MonthActivity : AppCompatActivity() {
         // BarData 생성
         val barData = BarData(diarrheaDataSet, constipationDataSet, colorChangeDataSet)
         // 막대 두께 설정 (0.5f는 기본값, 더 작게/크게 설정 가능)
-        barData.barWidth = 0.3f // 두께를 0.8로 설정 (값 조정 가능)
+        barData.barWidth = 0.4f // 두께를 0.8로 설정 (값 조정 가능)
         barChart.data = barData
 
         // BarChart 스타일 설정
