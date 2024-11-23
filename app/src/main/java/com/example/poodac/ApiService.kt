@@ -23,4 +23,7 @@ interface ApiService {
     @POST("api/login")
     fun login(@Body request: LoginRequest)
             : Call<LoginResponse>
+
+    // 월별 배변 기록 조회
+
 }
