@@ -25,5 +25,10 @@ interface ApiService {
             : Call<LoginResponse>
 
     // 월별 배변 기록 조회
-
+    @GET("api/monthly_stats")
+    fun getMonthlyStats(
+        @Query("p_id") patientId: Int,
+        @Query("year") year: Int,
+        @Query("month") month: Int
+    ): Call<MonthlyStatsResponse>
 }
