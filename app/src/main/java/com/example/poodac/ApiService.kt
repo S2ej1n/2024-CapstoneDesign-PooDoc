@@ -17,7 +17,9 @@ interface ApiService {
 
     // 오늘의 배변 기록 조회
     @GET("api/daily_stats")
-    fun getDailyStats(@Query("p_id") patientId: Int) : Call<DailyStatsResponse>
+    fun getDailyStats(
+        @Query("p_id") patientId: Int
+    ) : Call<DailyStatsResponse>
 
     // 로그인 요청
     @POST("api/login")

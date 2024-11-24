@@ -5,18 +5,26 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.graphics.Color
+import java.text.SimpleDateFormat
+import android.view.Gravity
+import android.widget.LinearLayout
+import android.widget.TableLayout
+import android.widget.TableRow
 import java.util.*
 
-class TodayActivity : AppCompatActivity() {
+class TodayActivity_backup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_today_stats)
+
+        //이거 나중에 외부 파일에 적을까 생각중. 배변시간
+        data class Record(val startTime: String, val endTime: String, val duration: String)
 
         //캘린더뷰에서 선택한 날짜 가져오기
         // 전달된 날짜 가져오기
         val selectedDate = intent.getStringExtra("SELECTED_DATE")
 
-        // TextView에 날짜 표시
+        // TextView에 날짜 표시 (예제)
         val dateTextView = findViewById<TextView>(R.id.today_date) // activity_today_stats에 있는 TextView ID
         dateTextView.text = "$selectedDate"
 
@@ -50,10 +58,97 @@ class TodayActivity : AppCompatActivity() {
         updateUI(serverNumber, mainDdongImageView, mainDdongNameTextView, mainDdongExplanTextView,
             poo1ImageView, poo2ImageView, poo3ImageView, poo4ImageView, poo5ImageView, poo6ImageView, poo7ImageView)
         updateTextColor(serverNumber, poo1Text, poo2Text, poo3Text, poo4Text, poo5Text, poo6Text, poo7Text)
+
+        //배변 시간 수정
+        val tableLayout: TableLayout = findViewById(R.id.tableLayout)
+        // 서버나 데이터로부터 정보를 받아오는 코드
+//        val startTime: String? = "14:00" // 예: 서버에서 받아온 데이터 (null이면 정보가 없음)
+//        val endTime: String? = "15:00"   // 예: 서버에서 받아온 데이터 (null이면 정보가 없음)
+//        val duration: String? = "22"  // 예: 서버에서 받아온 데이터 (null이면 정보가 없음)
+
+        val records = listOf(
+            Record("14:00", "15:00", "22"),
+            Record("16:00", "16:30", "15")
+            // 추가 기록...
+        )
+
+        // 기존 레이아웃 초기화
+        tableLayout.removeAllViews()
+
+        val paddingInDp = 4
+        val scale = resources.displayMetrics.density
+        val paddingInPx = (paddingInDp * scale + 0.5f).toInt()
+
+        if (records.isEmpty()) {
+            val noRecordTableRow = TableRow(this)
+            val noRecordLayout = LinearLayout(this).apply {
+                layoutParams = TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT
+                )
+                orientation = LinearLayout.HORIZONTAL
+                setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx)
+            }
+            val noRecordTextView = TextView(this).apply {
+                text = "오늘의 배변 기록이 존재하지 않아요."
+                textSize = 12f
+                setTextColor(resources.getColor(R.color.textcolor, theme))
+            }
+            noRecordLayout.addView(noRecordTextView)
+            noRecordTableRow.addView(noRecordLayout)
+            tableLayout.addView(noRecordTableRow)
+        }else {
+            for (record in records) {
+                val recordTableRow = TableRow(this)
+                val recordLayout = LinearLayout(this).apply {
+                    layoutParams = TableRow.LayoutParams(
+                        TableRow.LayoutParams.MATCH_PARENT,
+                        TableRow.LayoutParams.WRAP_CONTENT
+                    )
+                    orientation = LinearLayout.HORIZONTAL
+                    setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx) // 패딩 추가
+                }
+
+                val startTimeTextView = TextView(this).apply {
+                    text = record.startTime ?: ""
+                    textSize = 12f
+                    setTextColor(resources.getColor(R.color.textcolor, theme))
+                }
+
+                val endTimeTextView = TextView(this).apply {
+                    text = record.endTime ?: ""
+                    textSize = 12f
+                    setTextColor(resources.getColor(R.color.textcolor, theme))
+                }
+
+                val durationTextView = TextView(this).apply {
+                    text = "${record.duration ?: "0"} 분"
+                    textSize = 12f
+                    setTextColor(resources.getColor(R.color.textcolor, theme))
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    ).apply {
+                        setMargins(50, 0, 0, 0) // 오른쪽에 50dp 만큼의 간격을 추가
+                    }
+                    gravity = Gravity.END
+                }
+
+                recordLayout.addView(startTimeTextView)
+                recordLayout.addView(TextView(this).apply { text = " ~ " })
+                recordLayout.addView(endTimeTextView)
+                recordLayout.addView(durationTextView)
+
+                recordTableRow.addView(recordLayout)
+
+                tableLayout.addView(recordTableRow)
+            }
+        }
     }
 
     private fun fetchNumberFromServer(): Int {
-        //서버에서 받아온임의의 숫자
+        // 서버와의 통신 코드 작성 (네트워크 통신, REST API 호출 등)
+        // 서버로부터 받아온 숫자를 3으로 가정
         return 5
     }
 
