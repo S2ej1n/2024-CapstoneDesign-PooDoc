@@ -38,7 +38,6 @@ class MonthActivity : AppCompatActivity() {
             Toast.makeText(this, "환자 ID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
 
-
         //환자 이름 표시
         // Intent에서 텍스트 가져오기
         val patientName = intent.getStringExtra("PATIENT_NAME")
@@ -98,7 +97,6 @@ class MonthActivity : AppCompatActivity() {
 //
 //        // 그래프 새로고침
 //        barChart.invalidate()
-
 
         //여기는 캘린더 코드
         // CalendarView 객체 가져오기
