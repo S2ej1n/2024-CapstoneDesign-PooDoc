@@ -25,6 +25,10 @@ class MonthActivity : AppCompatActivity() {
 
         val barChart = findViewById<BarChart>(R.id.graph_layout) // XML에서 그래프의 ID를 가져옴
 
+        // 텍스트로 표시될 레이아웃
+        val bristolTextView = findViewById<TextView>(R.id.month_bristol)
+        val durationTextView = findViewById<TextView>(R.id.month_duration)
+
         // 이전 화면에서 전달된 patient_id를 수신 -- 쿼리 파라미터가 될것임.
         val patientId = intent.getIntExtra("PATIENT_ID", -1) // 기본값 -1
 
@@ -32,8 +36,7 @@ class MonthActivity : AppCompatActivity() {
         if (patientId != -1) {
             val year = 2024 // 조회 연도
             val month = 11  // 조회 월
-            fetchMonthlyStats(patientId, year, month, barChart)
-//            fetchMonthlyStats(patientId, year, month) // 서버 요청
+            fetchMonthlyStats(patientId, year, month, barChart, bristolTextView, durationTextView)
         } else {
             Toast.makeText(this, "환자 ID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
@@ -113,12 +116,15 @@ class MonthActivity : AppCompatActivity() {
 
             // 선택된 날짜를 전달
             intent.putExtra("SELECTED_DATE", selectedDate)
+            intent.putExtra("PATIENT_ID", patientId) //환자 아이디도 전달
             startActivity(intent)
         }
     }
 
     // 서버 연결 함수 추가
-    private fun fetchMonthlyStats(patientId: Int, year: Int, month: Int, barChart: BarChart) {
+    private fun fetchMonthlyStats(patientId: Int, year: Int, month: Int, barChart: BarChart,
+                                  bristolTextView: TextView,
+                                  durationTextView: TextView) {
         val apiService = ApiClient.getClient().create(ApiService::class.java)
 
         apiService.getMonthlyStats(patientId, year, month).enqueue(object : Callback<MonthlyStatsResponse> {
@@ -127,6 +133,9 @@ class MonthActivity : AppCompatActivity() {
                     val stats = response.body()
                     stats?.let {
                         displayGraph(it, barChart) // 데이터를 그래프에 반영
+
+                        bristolTextView.text = "${it.most_frequent_bristol} 형"
+                        durationTextView.text = "${it.average_duration} 분"
                     }
                 } else {
                     Toast.makeText(this@MonthActivity, "데이터 로드 실패: ${response.code()}", Toast.LENGTH_SHORT).show()

@@ -9,6 +9,7 @@ data class TimeInfo(
 
 data class DailyStatsResponse(
     val bristol: List<Int>,
+    val color: List<Int>,
     val count: Int,
     val time_info: List<TimeInfo>
 )
