@@ -49,57 +49,6 @@ class MonthActivity : AppCompatActivity() {
         val tvPatientName = findViewById<TextView>(R.id.tv_patient_name)
         tvPatientName.text = patientName
 
-        // ---------------------------------그래프그리기---------------------------------------------
-        // BarChart 초기화 코드
-//        val barChart = findViewById<BarChart>(R.id.graph_layout) // XML에서 그래프의 ID를 가져옴
-
-        // 그래프에 사용할 색상 지정
-//        val yellow_diarrhea_Color = Color.parseColor("#E8C300")
-//        val red_constipation_Color = Color.parseColor("#FF5656")
-//        val blue_strange_Color = Color.parseColor("#6893FF")
-//
-//        // 데이터 생성
-//        val diarrheaEntries = ArrayList<BarEntry>()
-//        val constipationEntries = ArrayList<BarEntry>()
-//        val colorChangeEntries = ArrayList<BarEntry>()
-//
-//        // 데이터 추가
-//        diarrheaEntries.add(BarEntry(1f, 2f)) // 설사
-//        constipationEntries.add(BarEntry(2f, 5f)) // 변비
-//        colorChangeEntries.add(BarEntry(3f, 3f)) // 변색깔 이상
-//
-//        // 각각의 BarDataSet 생성
-//        val diarrheaDataSet = BarDataSet(diarrheaEntries, "설사")
-//        diarrheaDataSet.color = yellow_diarrhea_Color // 노란색
-//        diarrheaDataSet.setDrawValues(true)
-//        diarrheaDataSet.valueTextSize = 12f
-//
-//
-//        val constipationDataSet = BarDataSet(constipationEntries, "변비")
-//        constipationDataSet.color = red_constipation_Color // 빨간색
-//        constipationDataSet.setDrawValues(true)
-//        constipationDataSet.valueTextSize = 12f
-//
-//        val colorChangeDataSet = BarDataSet(colorChangeEntries, "변색깔 이상")
-//        colorChangeDataSet.color = blue_strange_Color // 파란색
-//        colorChangeDataSet.setDrawValues(true) // 값 숨기기 (선택)
-//        colorChangeDataSet.valueTextSize = 12f
-//
-//        // BarData 생성
-//        val barData = BarData(diarrheaDataSet, constipationDataSet, colorChangeDataSet)
-//        // 막대 두께 설정 (0.5f는 기본값, 더 작게/크게 설정 가능)
-//        barData.barWidth = 0.4f // 두께를 0.8로 설정 (값 조정 가능)
-//        barChart.data = barData
-//
-//        // BarChart 스타일 설정
-//        barChart.description.isEnabled = false
-//        barChart.axisLeft.textColor = Color.BLACK
-//        barChart.axisRight.isEnabled = false
-//        barChart.xAxis.isEnabled = false
-//        barChart.animateY(1000) // 애니메이션 효과
-//
-//        // 그래프 새로고침
-//        barChart.invalidate()
 
         //여기는 캘린더 코드
         // CalendarView 객체 가져오기

@@ -11,6 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.widget.TableLayout
 import android.widget.TableRow
+import android.view.Gravity
 
 import java.util.*
 
@@ -37,33 +38,6 @@ class TodayActivity : AppCompatActivity() {
             Toast.makeText(this, "환자 ID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
 
-        // 제일 큰 메인 똥 정보들
-//        val mainDdongImageView: ImageView = findViewById(R.id.main_ddong)
-//        val mainDdongNameTextView: TextView = findViewById(R.id.main_ddong_name)
-//        val mainDdongExplanTextView: TextView = findViewById(R.id.main_ddong_explan)
-//
-//        // 텍스트 색깔 변경 - 밑의 작은 똥 정보들
-//        val poo1Text: TextView = findViewById(R.id.poo1text)
-//        val poo2Text: TextView = findViewById(R.id.poo2text)
-//        val poo3Text: TextView = findViewById(R.id.poo3text)
-//        val poo4Text: TextView = findViewById(R.id.poo4text)
-//        val poo5Text: TextView = findViewById(R.id.poo5text)
-//        val poo6Text: TextView = findViewById(R.id.poo6text)
-//        val poo7Text: TextView = findViewById(R.id.poo7text)
-//
-//        // 사진 변경 - 사진 색깔 변경임
-//        val poo1ImageView: ImageView = findViewById(R.id.poo1)
-//        val poo2ImageView: ImageView = findViewById(R.id.poo2)
-//        val poo3ImageView: ImageView = findViewById(R.id.poo3)
-//        val poo4ImageView: ImageView = findViewById(R.id.poo4)
-//        val poo5ImageView: ImageView = findViewById(R.id.poo5)
-//        val poo6ImageView: ImageView = findViewById(R.id.poo6)
-//        val poo7ImageView: ImageView = findViewById(R.id.poo7)
-//
-//        // 서버에서 받은 숫자에 따라 UI 업데이트
-//        updateUI(serverNumber, mainDdongImageView, mainDdongNameTextView, mainDdongExplanTextView,
-//            poo1ImageView, poo2ImageView, poo3ImageView, poo4ImageView, poo5ImageView, poo6ImageView, poo7ImageView)
-//        updateTextColor(serverNumber, poo1Text, poo2Text, poo3Text, poo4Text, poo5Text, poo6Text, poo7Text)
     }
 
     private fun fetchDailyStats(patientId: Int) {
@@ -148,6 +122,17 @@ class TodayActivity : AppCompatActivity() {
                 text = "${timeInfo.duration} 분"
                 textSize= 12f
                 setTextColor(Color.parseColor("#4E4E4E"))
+
+                gravity = Gravity.END // 텍스트를 오른쪽 정렬
+                layoutParams = TableRow.LayoutParams(
+                    0, // 열의 가로 크기를 weight 기반으로 설정
+                    TableRow.LayoutParams.WRAP_CONTENT, 1f
+                ).apply {
+                    marginEnd = 8 // 오른쪽 마진 추가
+                }
+                maxLines = 1 // 줄바꿈 방지
+                isSingleLine = true // 한 줄로 표시
+                ellipsize = null // 말줄임표 제거
             }
 
             // 시작시간 ~ 종료시간 형태로 결합

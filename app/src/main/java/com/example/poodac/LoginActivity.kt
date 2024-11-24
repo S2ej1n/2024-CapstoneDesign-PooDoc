@@ -31,11 +31,11 @@ class LoginActivity  : AppCompatActivity() {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 // 서버에 로그인 요청
-//                loginToServer(idInput, pwInput)
+                loginToServer(idInput, pwInput)
 
                 //(테스트용)
-                val intent = Intent(this, ManageActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this, ManageActivity::class.java)
+//                startActivity(intent)
                 // ------------------------------------------------
             }
         }
