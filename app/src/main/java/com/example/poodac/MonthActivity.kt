@@ -146,15 +146,17 @@ class MonthActivity : AppCompatActivity() {
         // 그래프에 사용할 색상 지정
         val yellowDiarrheaColor = Color.parseColor("#E8C300")
         val redConstipationColor = Color.parseColor("#FF5656")
-//        val blue_strange_Color = Color.parseColor("#6893FF")
+        val blue_strange_Color = Color.parseColor("#6893FF")
 
         // 데이터 생성
         val diarrheaEntries = ArrayList<BarEntry>()
         val constipationEntries = ArrayList<BarEntry>()
+        val colorChangeEntries = ArrayList<BarEntry>()
 
         // 서버 응답 데이터를 그래프 데이터로 변환
         constipationEntries.add(BarEntry(1f, stats.bristol_1_2.toFloat())) // 변비 데이터
         diarrheaEntries.add(BarEntry(2f, stats.bristol_6_7.toFloat())) // 설사 데이터
+        colorChangeEntries.add(BarEntry(3f, stats.most_frequent_color.toFloat())) // 변색깔 이상
 
         // 각각의 BarDataSet 생성
         val constipationDataSet = BarDataSet(constipationEntries, "변비")
@@ -167,16 +169,21 @@ class MonthActivity : AppCompatActivity() {
         diarrheaDataSet.setDrawValues(true)
         diarrheaDataSet.valueTextSize = 12f
 
+        val colorChangeDataSet = BarDataSet(colorChangeEntries, "변색깔 이상")
+        colorChangeDataSet.color = blue_strange_Color // 파란색
+        colorChangeDataSet.setDrawValues(true)
+        colorChangeDataSet.valueTextSize = 12f
+
         // BarData 생성
-        val barData = BarData(constipationDataSet, diarrheaDataSet)
+        val barData = BarData(constipationDataSet, diarrheaDataSet, colorChangeDataSet)
         barData.barWidth = 0.4f // 막대 두께 설정
         barChart.data = barData
 
         // BarChart 스타일 설정
         barChart.description.isEnabled = false
         barChart.axisLeft.textColor = Color.BLACK
-        barChart.xAxis.textColor = Color.BLACK
         barChart.axisRight.isEnabled = false
+        barChart.xAxis.isEnabled = false
         barChart.xAxis.setDrawGridLines(false)
         barChart.animateY(1000) // 애니메이션 효과
 
