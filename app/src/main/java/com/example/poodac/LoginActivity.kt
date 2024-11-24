@@ -60,7 +60,7 @@ class LoginActivity  : AppCompatActivity() {
                         }
                         "PWDoesntMatch" -> {
                             // 비밀번호 틀렸을 경우
-                            Toast.makeText(this@LoginActivity, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "비밀번호를 잘못 입력하셨습니다.", Toast.LENGTH_SHORT).show()
                         }
                         "IDisNOT_exist" -> {
                             // 아이디 틀렸을 경우
@@ -79,7 +79,7 @@ class LoginActivity  : AppCompatActivity() {
                         }
                         401 -> {
                             // 비밀번호 확인 필요
-                            Toast.makeText(this@LoginActivity, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity, "비밀번호를 잘못 입력하셨습니다.", Toast.LENGTH_SHORT).show()
                         }
                         else -> {
                             // 기타 오류 처리
