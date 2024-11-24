@@ -20,7 +20,7 @@ class MonthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_month_state)
 
         // 이전 화면에서 전달된 patient_id를 수신 -- 쿼리 파라미터가 될것임.
-//        val patientId = intent.getStringExtra("PATIENT_ID")?.toIntOrNull()
+//        val patientId = intent.getIntExtra("PATIENT_ID", -1) // 기본값 -1
 
         // 서버 연결
 //        if (patientId != null) {
@@ -84,7 +84,6 @@ class MonthActivity : AppCompatActivity() {
         // BarChart 스타일 설정
         barChart.description.isEnabled = false
         barChart.axisLeft.textColor = Color.BLACK
-//        barChart.xAxis.textColor = Color.BLACK
         barChart.axisRight.isEnabled = false
         barChart.xAxis.isEnabled = false
         barChart.animateY(1000) // 애니메이션 효과
@@ -100,7 +99,6 @@ class MonthActivity : AppCompatActivity() {
         // 날짜 선택 이벤트 처리
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             // 선택된 날짜를 Toast로 표시 (테스트 용도)
-//            val selectedDate = "$dayOfMonth/${month + 1}/$year"
             val selectedDate = "$year. ${month + 1}. $dayOfMonth."
             Toast.makeText(this, " $selectedDate 의 정보로 이동합니다.", Toast.LENGTH_SHORT).show()
 

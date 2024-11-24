@@ -115,7 +115,7 @@ class ManageActivity : AppCompatActivity() {
                 val intent = Intent(this, MonthActivity::class.java)
                 intent.putExtra("PATIENT_NAME", patient.patient_name) // 환자 이름 전달
                 intent.putExtra("PATIENT_AGE", patient.patient_age)
-//                intent.putExtra("PATIENT_ID", patient.p_id as String) // 환자 ID 전달
+                intent.putExtra("PATIENT_ID", patient.p_id) // 환자 ID 전달
                 startActivity(intent)
             }
 
