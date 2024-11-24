@@ -125,20 +125,35 @@ class TodayActivity : AppCompatActivity() {
         val tableLayout: TableLayout = findViewById(R.id.time_info_table)
         tableLayout.removeAllViews()
 
+
         stats.time_info.forEach { timeInfo ->
             val tableRow = TableRow(this)
+
+            // 시작 시간에서 시간만 추출 (HH:mm 형식)
+            val formattedStartTime = timeInfo.starttime.substring(11, 16) // "00:01"
+            val formattedEndTime = timeInfo.endtime.substring(11, 16)     // "00:05"
+
             val startTimeTextView = TextView(this).apply {
-                text = timeInfo.starttime
+                text = formattedStartTime
             }
             val endTimeTextView = TextView(this).apply {
-                text = timeInfo.endtime
+                text = formattedEndTime
             }
             val durationTextView = TextView(this).apply {
                 text = "${timeInfo.duration} 분"
+                textSize= 12f
+                setTextColor(Color.parseColor("#4E4E4E"))
             }
 
-            tableRow.addView(startTimeTextView)
-            tableRow.addView(endTimeTextView)
+            // 시작시간 ~ 종료시간 형태로 결합
+            val timeRangeTextView = TextView(this).apply {
+                text = "$formattedStartTime ~ $formattedEndTime"
+                textSize= 12f
+                setTextColor(Color.parseColor("#4E4E4E"))
+
+            }
+
+            tableRow.addView(timeRangeTextView) // 시간 범위 추가
             tableRow.addView(durationTextView)
 
             tableLayout.addView(tableRow)
