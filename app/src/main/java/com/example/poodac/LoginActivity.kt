@@ -26,48 +26,16 @@ class LoginActivity  : AppCompatActivity() {
             val idInput = editID.text.toString().trim()
             val pwInput = editPW.text.toString().trim()
 
-            // 서버 응답 시뮬레이션. 서버랑 연결하면 이게 서버 응답을 담는 변수가 될거임
-            var server_login_response = "successful"
-
-
             if (idInput.isEmpty() || pwInput.isEmpty()) {
                 // 입력 칸 중 하나라도 비어 있으면 경고 메시지 표시
-                Toast.makeText(this, "모든 칸을 입력해주세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 // 서버에 로그인 요청
 //                loginToServer(idInput, pwInput)
 
-//                // 아이디와 비밀번호 확인 로직--------------------
-//                if (idInput == "test") {
-//                    if (pwInput == "1234") {
-//                        server_login_response = "successful"
-//                    } else {
-//                        server_login_response = "PWDoesntMatch" // 비밀번호 틀림
-//                    }
-//                } else {
-//                    server_login_response = "IDisNOT_exist" // 아이디 없음
-//                }
-
-                // 서버 응답 처리 -------------------------(테스트용)
-                when (server_login_response) {
-                    "successful" -> {
-                        // 로그인 성공 시 다음 화면으로 이동
-                        val intent = Intent(this, ManageActivity::class.java)
-                        startActivity(intent)
-                    }
-                    "PWDoesntMatch" -> {
-                        // 비밀번호 틀렸을 경우
-                        Toast.makeText(this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    "IDisNOT_exist" -> {
-                        // 아이디 틀렸을 경우
-                        Toast.makeText(this, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        // 기타 오류 처리
-                        Toast.makeText(this, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                //(테스트용)
+                val intent = Intent(this, ManageActivity::class.java)
+                startActivity(intent)
                 // ------------------------------------------------
             }
         }
@@ -104,10 +72,22 @@ class LoginActivity  : AppCompatActivity() {
                         }
                     }
                 } else {
-                    Toast.makeText(this@LoginActivity, "로그인 실패: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    when (response.code()) {
+                        404 -> {
+                            // 존재하지 않는 아이디
+                            Toast.makeText(this@LoginActivity, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show()
+                        }
+                        401 -> {
+                            // 비밀번호 확인 필요
+                            Toast.makeText(this@LoginActivity, "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {
+                            // 기타 오류 처리
+                            Toast.makeText(this@LoginActivity, "로그인 실패: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
-
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 // 네트워크 또는 기타 오류 처리
                 Toast.makeText(this@LoginActivity, "통신 실패: ${t.message}", Toast.LENGTH_SHORT).show()

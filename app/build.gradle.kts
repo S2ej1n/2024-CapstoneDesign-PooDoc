@@ -36,7 +36,6 @@ android {
 }
 
 dependencies {
-
     //로그를 남기기 위한 라이브러리 -> 통신로그 깔끔하게 보기 가능
     //implementation ("com.squareup.okhttp3:logging-interceptor:3.11.0")
     // Retrofit

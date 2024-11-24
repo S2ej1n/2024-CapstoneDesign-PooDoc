@@ -19,6 +19,19 @@ class MonthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_month_state)
 
+        // 이전 화면에서 전달된 patient_id를 수신 -- 쿼리 파라미터가 될것임.
+//        val patientId = intent.getStringExtra("PATIENT_ID")?.toIntOrNull()
+
+        // 서버 연결
+//        if (patientId != null) {
+//            val year = 2024 // 조회 연도
+//            val month = 11  // 조회 월
+//            fetchMonthlyStats(patientId, year, month)
+//        } else {
+//            Toast.makeText(this, "환자 ID가 없습니다.", Toast.LENGTH_SHORT).show()
+//        }
+
+
         //환자 이름 표시
         // Intent에서 텍스트 가져오기
         val patientName = intent.getStringExtra("PATIENT_NAME")
@@ -71,8 +84,9 @@ class MonthActivity : AppCompatActivity() {
         // BarChart 스타일 설정
         barChart.description.isEnabled = false
         barChart.axisLeft.textColor = Color.BLACK
-        barChart.xAxis.textColor = Color.BLACK
+//        barChart.xAxis.textColor = Color.BLACK
         barChart.axisRight.isEnabled = false
+        barChart.xAxis.isEnabled = false
         barChart.animateY(1000) // 애니메이션 효과
 
         // 그래프 새로고침
