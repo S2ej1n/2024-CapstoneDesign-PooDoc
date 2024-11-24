@@ -125,9 +125,14 @@ class TodayActivity : AppCompatActivity() {
         val tableLayout: TableLayout = findViewById(R.id.time_info_table)
         tableLayout.removeAllViews()
 
+        val paddingInDp = 4
+        val scale = resources.displayMetrics.density
+        val paddingInPx = (paddingInDp * scale + 0.5f).toInt() // dp를 px로 변환
 
         stats.time_info.forEach { timeInfo ->
-            val tableRow = TableRow(this)
+            val tableRow = TableRow(this).apply {
+                setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx) // 패딩 설정
+            }
 
             // 시작 시간에서 시간만 추출 (HH:mm 형식)
             val formattedStartTime = timeInfo.starttime.substring(11, 16) // "00:01"
