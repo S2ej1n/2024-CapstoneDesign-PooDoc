@@ -58,6 +58,9 @@ class MonthActivity : AppCompatActivity() {
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             // 선택된 날짜를 Toast로 표시 (테스트 용도)
             val selectedDate = "$year. ${month + 1}. $dayOfMonth."
+            //서버전달용
+            val gotoselectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
+
             Toast.makeText(this, " $selectedDate 의 정보로 이동합니다.", Toast.LENGTH_SHORT).show()
 
             // activity_today_stats로 이동
@@ -66,6 +69,8 @@ class MonthActivity : AppCompatActivity() {
             // 선택된 날짜를 전달
             intent.putExtra("SELECTED_DATE", selectedDate)
             intent.putExtra("PATIENT_ID", patientId) //환자 아이디도 전달
+
+            intent.putExtra("GOTO_SELECTED_DATE", gotoselectedDate)
             startActivity(intent)
         }
     }

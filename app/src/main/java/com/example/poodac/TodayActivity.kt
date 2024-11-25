@@ -25,6 +25,7 @@ class TodayActivity : AppCompatActivity() {
         // 캘린더뷰에서 선택한 날짜 가져오기
         // 전달된 날짜 가져오기
         val selectedDate = intent.getStringExtra("SELECTED_DATE")
+        val gotoselectedDate = intent.getStringExtra("GOTO_SELECTED_DATE") ?: ""
         // TextView에 날짜 표시
         val dateTextView = findViewById<TextView>(R.id.today_date) // activity_today_stats에 있는 TextView ID
         dateTextView.text = "$selectedDate"
@@ -33,17 +34,17 @@ class TodayActivity : AppCompatActivity() {
         val patientId = intent.getIntExtra("PATIENT_ID", -1)
 
         if (patientId != -1) {
-            fetchDailyStats(patientId)
+            fetchDailyStats(patientId, gotoselectedDate)
         } else {
             Toast.makeText(this, "환자 ID를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun fetchDailyStats(patientId: Int) {
+    private fun fetchDailyStats(patientId: Int, date: String) {
         val apiService = ApiClient.getClient().create(ApiService::class.java)
 
-        apiService.getDailyStats(patientId).enqueue(object : Callback<DailyStatsResponse> {
+        apiService.getDailyStats(patientId, date).enqueue(object : Callback<DailyStatsResponse> {
             override fun onResponse(call: Call<DailyStatsResponse>, response: Response<DailyStatsResponse>) {
                 if (response.isSuccessful) {
                     val stats = response.body()

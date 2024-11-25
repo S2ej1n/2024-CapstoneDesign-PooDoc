@@ -18,7 +18,8 @@ interface ApiService {
     // 오늘의 배변 기록 조회
     @GET("api/daily_stats")
     fun getDailyStats(
-        @Query("p_id") patientId: Int
+        @Query("p_id") patientId: Int,
+        @Query("date") date: String // 날짜 (yyyy-mm-dd 형식)
     ) : Call<DailyStatsResponse>
 
     // 로그인 요청
