@@ -53,7 +53,9 @@ class TodayActivity : AppCompatActivity() {
                         displayDailyStats(it)
                     }
                 } else {
-                    Toast.makeText(this@TodayActivity, "데이터 로드 실패: ${response.code()}", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@TodayActivity, "데이터 로드 실패: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@TodayActivity, "데이터가 존재하지 않아요", Toast.LENGTH_SHORT).show()
+
                 }
             }
 

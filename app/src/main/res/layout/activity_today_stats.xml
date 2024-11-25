@@ -430,6 +430,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:stretchColumns="*">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/textcolor"
+                        android:layout_margin="8dp"
+                        android:text="오늘의 배변 기록이 존재하지 않아요."/>
                 </TableLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
