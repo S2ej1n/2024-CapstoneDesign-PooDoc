@@ -114,7 +114,7 @@ class MonthActivity : AppCompatActivity() {
         val constipationEntries = ArrayList<BarEntry>()
         val colorChangeEntries = ArrayList<BarEntry>()
 
-        // 서버 응답 데이터를 그래프 데이터로 변환
+        // 서버 응답 데이터 -> 그래프 데이터로 변환
         constipationEntries.add(BarEntry(1f, stats.bristol_1_2.toFloat())) // 변비 데이터
         diarrheaEntries.add(BarEntry(2f, stats.bristol_6_7.toFloat())) // 설사 데이터
         colorChangeEntries.add(BarEntry(3f, stats.most_frequent_color.toFloat())) // 변색깔 이상

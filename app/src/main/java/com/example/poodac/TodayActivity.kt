@@ -49,7 +49,7 @@ class TodayActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val stats = response.body()
                     stats?.let {
-                        // 서버 응답 데이터를 처리하는 함수 호출
+                        // 서버 응답 데이터 처리 함수 호출
                         displayDailyStats(it)
                     }
                 } else {
@@ -94,11 +94,11 @@ class TodayActivity : AppCompatActivity() {
             findViewById(R.id.poo7text)
         )
 
-        // 횟수 데이터를 표시
+        // 횟수 표시
         val countTextView = findViewById<TextView>(R.id.how_many_poo)
         countTextView.text = "${stats.count}"
 
-        // 시간 정보를 표시
+        // 시간 정보 표시
         val tableLayout: TableLayout = findViewById(R.id.time_info_table)
         tableLayout.removeAllViews()
 
@@ -131,7 +131,7 @@ class TodayActivity : AppCompatActivity() {
                     0, // 열의 가로 크기를 weight 기반으로 설정
                     TableRow.LayoutParams.WRAP_CONTENT, 1f
                 ).apply {
-                    marginEnd = 8 // 오른쪽 마진 추가
+                    marginEnd = 8 // 오른쪽 마진 추가 (레이아웃 정렬 위해)
                 }
                 maxLines = 1 // 줄바꿈 방지
                 isSingleLine = true // 한 줄로 표시

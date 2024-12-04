@@ -16,55 +16,14 @@ class ManageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_management)
 
-        // 샘플 환자 리스트 데이터 ----------------------------------------------
-//        val patientList = listOf(
-//            mapOf("patient_id" to "1", "patient_name" to "마라탕웨이", "patient_age" to 65),
-//            mapOf("patient_id" to "2", "patient_name" to "김순자", "patient_age" to 70)
-//        )
-//        // --------------------------------------------------------------
-
         // TextView를 추가할 부모 레이아웃
         val parentLayout = findViewById<LinearLayout>(R.id.patientContainer)
         // 환자 데이터를 서버에서 불러오기
         fetchPatientData(parentLayout)
 
-        // 환자 리스트를 순회하며 TextView를 동적으로 추가(테스트용)--------------------
-//        for ((index, patient) in patientList.withIndex()) {
-//            val patientName = patient["patient_name"] as String // 환자 이름 가져오기
-//            val patientAge = patient["patient_age"] as Int
-//
-//            val patientNameWithAge = "$patientName ($patientAge)"
-//
-//            // TextView 생성
-//            val textView = TextView(this).apply {
-//                id = index + 1 // 고유 ID 설정
-//                text = patientNameWithAge // 환자 이름 설정
-//                setTextColor(resources.getColor(R.color.textcolor, null))
-//                setBackgroundResource(R.drawable.patient_box)
-//                setPadding(12, 20, 15, 20)
-//                textSize = 15f
-//                layoutParams = LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.WRAP_CONTENT,
-//                    LinearLayout.LayoutParams.WRAP_CONTENT
-//                ).apply {
-//                    topMargin = 15
-//                }
-//            }
-//
-//            textView.setOnClickListener {
-//                val intent = Intent(this, MonthActivity::class.java)
-//                intent.putExtra("PATIENT_NAME", patientName) // 환자 이름 전달
-//                intent.putExtra("PATIENT_AGE", patientAge)
-//                startActivity(intent)
-//            }
-//
-//            // TextView를 부모 레이아웃에 추가
-//            parentLayout.addView(textView)
-//        }
-        //-------------------------------------------------------------------------
     }
 
-    // 환자 데이터를 서버에서 불러오기
+    // 환자 데이터를 서버에서 불러오기..
     private fun fetchPatientData(parentLayout: LinearLayout) {
         val apiService = ApiClient.getClient().create(ApiService::class.java)
 
@@ -89,9 +48,9 @@ class ManageActivity : AppCompatActivity() {
         })
     }
 
-    // 레이아웃에 추가하는 함수
+    // 레이아웃에 추가하는 함수!
     private fun displayPatientList(parentLayout: LinearLayout, patientList: List<Patient>) {
-        // 환자 리스트를 순회하며 TextView를 동적으로 추가
+        // 환자 TextView 추가 (리스트 순회, 동적)
         for ((index, patient) in patientList.withIndex()) {
             val patientNameWithAge = "${patient.patient_name} (${patient.patient_age})"
 

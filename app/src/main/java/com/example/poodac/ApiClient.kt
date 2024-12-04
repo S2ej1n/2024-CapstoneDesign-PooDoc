@@ -10,7 +10,7 @@ object ApiClient {
     fun getClient(): Retrofit {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.0.63:5000/")
+                .baseUrl("http://192.168.160.46:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
